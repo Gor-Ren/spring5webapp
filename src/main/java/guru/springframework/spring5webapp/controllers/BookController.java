@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class BookController {
 
+    private static final String BOOKS_ATTRIBUTE_NAME = "books";
     private static final String BOOKS_VIEW_NAME = "books";
     private BookRepository bookRepository;
 
@@ -17,7 +18,7 @@ public class BookController {
 
     @RequestMapping("/books")
     public String getBooks(Model model) {
-        model.addAttribute("books", bookRepository.findAll());
+        model.addAttribute(BOOKS_ATTRIBUTE_NAME, bookRepository.findAll());
         return BOOKS_VIEW_NAME;
     }
 }
